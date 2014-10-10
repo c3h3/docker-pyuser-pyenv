@@ -11,6 +11,10 @@ RUN apt-get -y install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlit
 RUN apt-get -y install wget curl llvm
 RUN apt-get -y install vim
 
+RUN mkdir /tmp/openblas_build
+RUN cd /tmp/openblas_build/ && git clone -q --branch=master git://github.com/xianyi/OpenBLAS.git
+RUN cd /tmp/openblas_build/OpenBLAS/ && make DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=32 && make install && ldconfig
+RUN cd /tmp && rm -rf openblas_build/
 
 RUN useradd -m pyuser
 RUN echo 'pyuser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
