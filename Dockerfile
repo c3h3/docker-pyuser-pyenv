@@ -9,7 +9,7 @@ RUN apt-get -y install sudo
 RUN apt-get -y install make cmake
 RUN apt-get -y install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev
 RUN apt-get -y install wget curl llvm
-RUN apt-get -y install vim python
+RUN apt-get -y install vim
 
 
 RUN useradd -m pyuser
