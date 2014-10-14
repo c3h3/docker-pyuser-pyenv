@@ -31,7 +31,7 @@ RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/py
 ENV PATH ~/.pyenv/shims:~/.pyenv/bin:$PATH
 RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
 #RUN echo 'eval "$(pyenv virtualenv-init -)"' > ~/.bashrc
-RUN pyenv install 2.7.8
+#RUN pyenv install 2.7.8
 #RUN pyenv install anaconda-2.0.1
 
 
