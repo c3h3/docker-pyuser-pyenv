@@ -17,22 +17,25 @@ RUN cd /tmp/openblas_build/OpenBLAS-0.2.12/ &&  make DYNAMIC_ARCH=1 NO_AFFINITY=
 
 RUN cd /tmp && rm -rf openblas_build/
 
+ENV LD_LIBRARY_PATH /opt/OpenBLAS/lib/
+
 RUN useradd -m pyuser
 RUN echo 'pyuser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 WORKDIR /home/pyuser
 USER pyuser
-ENV HOME /home/pyuser
-ENV PYENVPATH $HOME/.pyenv
-ENV PATH $PYENVPATH/shims:$PYENVPATH/bin:$PATH
+#ENV HOME /home/pyuser
+#ENV PYENVPATH $HOME/.pyenv
+#ENV PATH $PYENVPATH/shims:$PYENVPATH/bin:$PATH
 
-RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+#RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
-ENV PATH ~/.pyenv/shims:~/.pyenv/bin:$PATH
-RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
+#ENV PATH ~/.pyenv/shims:~/.pyenv/bin:$PATH
+#RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
 #RUN echo 'eval "$(pyenv virtualenv-init -)"' > ~/.bashrc
 #RUN pyenv install 2.7.8
 #RUN pyenv install anaconda-2.0.1
 
+#RUN pyenv global 2.7.8
 
 
