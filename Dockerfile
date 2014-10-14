@@ -12,8 +12,9 @@ RUN apt-get -y install wget curl llvm
 RUN apt-get -y install vim
 
 RUN mkdir /tmp/openblas_build
-RUN cd /tmp/openblas_build/ && git clone -q --branch=master git://github.com/xianyi/OpenBLAS.git
-RUN cd /tmp/openblas_build/OpenBLAS/ && make DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=32 && make install && ldconfig
+RUN cd /tmp/openblas_build/ && wget https://github.com/xianyi/OpenBLAS/archive/v0.2.12.tar.gz && tar xfzv v0.2.12.tar.gz
+RUN cd /tmp/openblas_build/OpenBLAS-0.2.12/ &&  make DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=32 && make install && ldconfig
+
 RUN cd /tmp && rm -rf openblas_build/
 
 RUN useradd -m pyuser
@@ -30,7 +31,7 @@ RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/py
 ENV PATH ~/.pyenv/shims:~/.pyenv/bin:$PATH
 RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
 #RUN echo 'eval "$(pyenv virtualenv-init -)"' > ~/.bashrc
-#RUN pyenv install 2.7.8
+RUN pyenv install 2.7.8
 #RUN pyenv install anaconda-2.0.1
 
 
