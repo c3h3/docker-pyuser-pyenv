@@ -34,5 +34,6 @@ RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
 #RUN pyenv install 2.7.8
 #RUN pyenv install anaconda-2.0.1
 
+RUN pyenv global 2.7.8
 
 
