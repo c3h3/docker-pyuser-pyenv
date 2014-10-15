@@ -22,6 +22,9 @@ RUN echo 'pyuser ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 WORKDIR /home/pyuser
 USER pyuser
+
+ENV LD_LIBRARY_PATH /opt/OpenBLAS/lib/
+
 ENV HOME /home/pyuser
 ENV PYENVPATH $HOME/.pyenv
 ENV PATH $PYENVPATH/shims:$PYENVPATH/bin:$PATH
@@ -34,6 +37,6 @@ RUN echo 'eval "$(pyenv init -)"' >  ~/.bashrc
 #RUN pyenv install 2.7.8
 #RUN pyenv install anaconda-2.0.1
 
-RUN pyenv global 2.7.8
+#RUN pyenv global 2.7.8
 
 
